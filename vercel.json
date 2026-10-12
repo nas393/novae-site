@@ -76,5 +76,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/read",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }

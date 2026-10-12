@@ -1,0 +1,11 @@
+{
+  "_note": "Lumière launch proof. Fill only with real, permitted data. Empty values are not shown on the site.",
+  "quote": {"en": "", "pt": "", "author": "", "role_en": "Founder, Lumière Beauty", "role_pt": "Fundadora, Lumière Beauty"},
+  "metrics": [
+    {"value": "", "label_en": "accounts reached in the first week", "label_pt": "contas alcançadas na primeira semana"},
+    {"value": "", "label_en": "days to the first sale", "label_pt": "dias até à primeira venda"},
+    {"value": "", "label_en": "views on the launch posts", "label_pt": "visualizações nas publicações de lançamento"}
+  ],
+  "source_en": "Instagram Insights, first week after launch",
+  "source_pt": "Instagram Insights, primeira semana após o lançamento"
+}
