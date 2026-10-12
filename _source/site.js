@@ -28,7 +28,7 @@ if(RM||!('IntersectionObserver' in window))rv.forEach(function(el){el.classList.
 else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});rv.forEach(function(el){io.observe(el)})}
 // sticky contact bar: after the hero, hidden over the audit section
 var bar=document.getElementById('mbar'),hero=document.getElementById('top'),aud=document.getElementById('audit-sec'),pastHero=false,atAudit=false;
-function upd(){bar.classList.toggle('on',pastHero&&!atAudit)}
+var always=window.matchMedia&&matchMedia('(max-width:960px)').matches;function upd(){bar.classList.toggle('on',(always||pastHero)&&!atAudit)}
 if('IntersectionObserver' in window){new IntersectionObserver(function(es){pastHero=!es[0].isIntersecting;upd()},{threshold:.15}).observe(hero);new IntersectionObserver(function(es){atAudit=es[0].isIntersecting;upd()},{threshold:.2}).observe(aud)}else bar.classList.add('on');
 // films
 var lb=document.getElementById('lb'),vid=document.getElementById('vid'),last=null;

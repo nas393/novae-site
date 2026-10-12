@@ -218,6 +218,43 @@ pillars='<div class="pillars">'+''.join(f'<a href="#services" data-tab="tb-{k}" 
 assert '</ul></div>\n<a class="bookcard' in hero
 hero=hero.replace('</ul></div>\n<a class="bookcard','</ul>'+pillars+'</div>\n<a class="bookcard',1)
 
+# 11 · v14: hero = words only; services as three expandable pillars with the audit button under them;
+#      Lumière numbers open the case study
+import re as _re
+_ctas=_re.search(r'<div class="ctas">.*?</div>',hero,_re.S).group(0)
+_micro=_re.search(r'<ul class="micro">.*?</ul>',hero,_re.S).group(0)
+hero=hero.replace(_ctas,'').replace(_micro,'').replace(pillars,'')
+DESC={'position':('Know what you own','Saiba o que ocupa'),'presence':('Brand, content and website','Marca, conteúdo e website'),'growth':('Turn attention into clients','Transformar atenção em clientes')}
+def acc(i,k,n,en,pt,ten,tpt,items,fr,feat):
+    den,dpt=DESC[k]
+    return (f'<details class="svc" id="svc-{k}"><summary><i class="sn">{n}</i><b class="sv">{T(en,pt)}</b><span class="sd">{T(den,dpt)}</span><span class="pm" aria-hidden="true"></span></summary>'
+            f'<div class="svb"><div class="svl"><p class="tag">{T(ten,tpt)}</p><p class="for"><b>{T("Best for:","Ideal para:")}</b> {T(fr[0],fr[1])}</p>'
+            +(f'<p class="st">{T("Most clients start here","A maioria dos clientes começa aqui")}</p>' if feat else '')
+            +f'<div class="price">{price(k)}'+waL(f'Hello NOVAE, I’d like to know more about {en}.',f'Olá NOVAE, gostaria de saber mais sobre {pt}.','btn solid sm',WA_ICON+' '+T('Ask about '+en,'Saber mais sobre '+pt),'pkg-'+k)+'</div></div>'
+            f'<div class="svr"><p class="ih">{T("What’s included","O que inclui")}</p><ul>'+''.join(f'<li>{T(a,b)}</li>' for a,b in items)+'</ul></div></div></details>')
+services=(f'<section class="sec" id="services"><div class="wrap"><div class="rv svh"><div><p class="eyebrow">{T("Services","Serviços")}</p><h2 class="h2">{T("Position. Presence. <span class=mk>Growth.</span>","Posição. Presença. <span class=mk>Crescimento.</span>")}</h2></div>'
+          f'<p class="lead">{T("Three services that build on each other. Open one to see what’s included.","Três serviços que se constroem um sobre o outro. Abra um para ver o que inclui.")}</p></div>'
+          '<div class="accs rv">'+''.join(acc(i,*p) for i,p in enumerate(PK))+'</div>'
+          f'<div class="svcta rv">{_ctas.replace(_re.search(r"<a class=\"btn\" href=\"#work\".*?</a>",_ctas,_re.S).group(0),"").replace("data-cta=\"hero\"","data-cta=\"services\"")}{_micro}</div></div></section>')
+facts=''
+sm=[m for m in mets if m.get('strip')]
+_ls=''.join(f'<figure><img src="img/{f}" alt="{alt}" loading="lazy" decoding="async" width="600" height="750"><figcaption>{T(a,b)}</figcaption></figure>' for f,a,b,alt in LS)
+_nf=[m for m in mets if not m.get('strip')]
+work=(f'<section class="sec" id="work" style="background:var(--white)"><div class="wrap"><p class="eyebrow rv">{T("Case study","Caso de estudo")}</p>'
+  f'<details class="case2 rv"><summary class="ps"><span class="pl"><img src="img/lumiere-logo.jpg" alt="" width="48" height="48"><span class="pln"><i>{T("Latest launch · new account","Último lançamento · conta nova")}</i>Lumière Beauty</span></span>'
+  +''.join(f'<span class="pn"><b>{T(m["value"],m.get("value_pt") or m["value"])}</b><span class="ml">{T(m["label_en"],m["label_pt"])}</span></span>' for m in sm)
+  +f'<span class="go"><span class="o">{T("See the case","Ver o caso")}</span><span class="c">{T("Close the case","Fechar o caso")}</span></span>'
+  +f'<small class="src">{T(PROOF["source_en"],PROOF["source_pt"])}</small></summary>'
+  f'<div class="cbody"><p class="lead">{T("A beauty, skin and self-care space in Luanda. We built the brand before the doors opened.","Um espaço de beleza, pele e autocuidado em Luanda. Construímos a marca antes de as portas abrirem.")}</p>'
+  f'<div class="wk"><div class="shots">{_ls}</div><div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>'
+  f'<div class="wkr"><p class="q">{T("“More than a <span class=mk>salon.</span>”","“Mais do que um <span class=mk>salão.</span>”")}</p>'
+  +''.join(f'<p class="nf"><b>{T(m["value"],m.get("value_pt") or m["value"])}</b> {T(m["label_en"],m["label_pt"])}</p>' for m in _nf)
+  +f'<div class="films2">{film("lumiere-film.mp4","lumiere-film.mp4","lumiere-film-cover-en.jpg","lumiere-film-cover-pt.jpg","Launch film","Filme de lançamento","15 s")}{film("lumiere-xray-en.mp4","lumiere-xray-pt.mp4","lumiere-xray-cover-en.jpg","lumiere-xray-cover-pt.jpg","Brand X-ray","Raio-X da marca","15 s")}</div>'
+  f'<dl class="cdl"><dt>{T("The challenge","O desafio")}</dt><dd>{T("Be noticed, and trusted, before opening day.","Ser notada, e merecer confiança, antes do dia da abertura.")}</dd>'
+  f'<dt>{T("The position","A posição")}</dt><dd>{T("Expert care, quality treatments and selected products in one place: look good, feel good, feel confident.","Cuidado especializado, tratamentos de qualidade e produtos escolhidos num só lugar: ficar bem, sentir-se bem, sentir-se confiante.")}</dd>'
+  f'<dt>{T("What we did","O que fizemos")}</dt><dd><ul class="did"><li>{T("Positioning","Posicionamento")}</li><li>{T("Logo &amp; identity","Logótipo e identidade")}</li><li>{T("Instagram launch","Lançamento no Instagram")}</li><li>{T("First posts","Primeiras publicações")}</li><li>{T("Two films","Dois filmes")}</li></ul></dd></dl>'
+  f'{quote_html}<p style="margin:14px 0 0"><a class="link" href="https://instagram.com/lumiere.beauty.ao" target="_blank" rel="noopener">{T("See @lumiere.beauty.ao →","Ver @lumiere.beauty.ao →")}</a></p></div></div></div></details></div></section>')
+
 FONTS=''.join(f"@font-face{{font-family:'{f}';font-style:{st};font-weight:{w};font-display:swap;src:url(fonts/{u}) format('woff2')}}" for f,st,w,u in [('EB Garamond','normal',400,'eb-garamond-400-normal.woff2'),('EB Garamond','italic',400,'eb-garamond-400-italic.woff2'),('EB Garamond','normal',500,'eb-garamond-500-normal.woff2'),('Inter','normal',400,'inter-latin-400-normal.woff2'),('Inter','normal',500,'inter-latin-500-normal.woff2')])
 CSS=open(f'{D}/site.css').read()+open(f'{D}/site10.css').read(); JS=open(f'{D}/site.js').read()+open(f'{D}/site10.js').read()
 LD=json.dumps({"@context":"https://schema.org","@type":"ProfessionalService","name":"NOVAE","description":"Estúdio de marketing e marca em Luanda: posicionamento, identidade, conteúdo, websites e crescimento.","slogan":"Position. Presence. Growth.","url":URL,"image":URL+"og-image.jpg","areaServed":"Angola","address":{"@type":"PostalAddress","addressLocality":"Luanda","addressCountry":"AO"},"founder":{"@type":"Person","name":"Lara Abou Saleh"},"sameAs":[f"https://instagram.com/{IG}"],"knowsLanguage":["pt","en"]},ensure_ascii=False)
