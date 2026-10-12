@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://novae-kappa.vercel.app/sitemap.xml
+Sitemap: https://novae-mu.vercel.app/sitemap.xml
