@@ -196,6 +196,23 @@ if mets:
         +''.join(f'<span class="pn"><b>{T(m["value"],m.get("value_pt") or m["value"])}</b><span class="ml">{T(m["label_en"],m["label_pt"])}</span></span>' for m in sm)
         +f'<span class="go">{T("See the case →","Ver o caso →")}</span></a></div></section>')
 
+# 9 · copy v12, founder full section before the audit, questions folded into one row
+_old_lead='NOVAE positions founders, personal brands and growing businesses in Angola, then builds the brand, content and website that make the right clients choose them.'
+_old_lead_pt='A NOVAE posiciona fundadores, marcas pessoais e negócios em crescimento em Angola e depois constrói a marca, o conteúdo e o website que fazem os clientes certos escolhê-los.'
+assert _old_lead in hero and _old_lead_pt in hero
+hero=hero.replace(_old_lead,'We position founders and growing brands so the right clients choose them.').replace(_old_lead_pt,'Posicionamos fundadores e marcas em crescimento para que os clientes certos os escolham.')
+_h_en='You don’t need more posts. You need a <span class=mk>position.</span>';_h_pt='Não precisa de mais publicações. Precisa de <span class=mk>posicionamento.</span>'
+_l_en='When people can’t see why you’re different, they compare prices. We decide what your brand should own, then every post and every page says it.'
+_l_pt='Quando não percebem porque é diferente, comparam preços. Decidimos o que a sua marca deve ocupar e depois cada publicação e cada página dizem isso.'
+for o in (_h_en,_h_pt,_l_en,_l_pt): assert o in problem
+problem=(problem.replace(_h_en,'Followers don’t pay. <span class=mk>Clients do.</span>').replace(_h_pt,'Seguidores não pagam. <span class=mk>Clientes pagam.</span>')
+  .replace(_l_en,'Being visible without a clear reason to choose you ends in a price comparison. We define that reason first, then build everything around it.')
+  .replace(_l_pt,'Ser visto sem uma razão clara para ser escolhido acaba numa comparação de preços. Definimos essa razão primeiro e construímos tudo à volta dela.'))
+audit=audit.replace(lara,'')
+faq=(f'<section class="sec" id="faq" style="background:var(--white)"><div class="wrap"><details class="faqall rv"><summary><span class="fh"><span class="eyebrow">{T("Questions","Perguntas")}</span><h2 class="h2">{T("Before you write.","Antes de escrever.")}</h2></span>'
+     f'<span class="fx">{T(str(len(FAQ))+" answers",str(len(FAQ))+" respostas")}</span></summary><div class="faq">'
+     +''.join(f'<details><summary>{T(a,b)}</summary><p>{T(c,d)}</p></details>' for a,b,c,d in FAQ)+'</div></details></div></section>')
+
 FONTS=''.join(f"@font-face{{font-family:'{f}';font-style:{st};font-weight:{w};font-display:swap;src:url(fonts/{u}) format('woff2')}}" for f,st,w,u in [('EB Garamond','normal',400,'eb-garamond-400-normal.woff2'),('EB Garamond','italic',400,'eb-garamond-400-italic.woff2'),('EB Garamond','normal',500,'eb-garamond-500-normal.woff2'),('Inter','normal',400,'inter-latin-400-normal.woff2'),('Inter','normal',500,'inter-latin-500-normal.woff2')])
 CSS=open(f'{D}/site.css').read()+open(f'{D}/site10.css').read(); JS=open(f'{D}/site.js').read()+open(f'{D}/site10.js').read()
 LD=json.dumps({"@context":"https://schema.org","@type":"ProfessionalService","name":"NOVAE","description":"Estúdio de marketing e marca em Luanda: posicionamento, identidade, conteúdo, websites e crescimento.","slogan":"Position. Presence. Growth.","url":URL,"image":URL+"og-image.jpg","areaServed":"Angola","address":{"@type":"PostalAddress","addressLocality":"Luanda","addressCountry":"AO"},"founder":{"@type":"Person","name":"Lara Abou Saleh"},"sameAs":[f"https://instagram.com/{IG}"],"knowsLanguage":["pt","en"]},ensure_ascii=False)
@@ -214,7 +231,7 @@ html=f'''<!doctype html><html lang="pt-AO" data-lang="pt"><head><meta charset="u
 <a class="skip" href="#main">{T("Skip to content","Saltar para o conteúdo")}</a>
 <header class="hd"><div class="wrap">{BRAND}<nav class="nav" aria-label="Main">{navl}</nav>{LANG}<span class="hdcta">{AUD("solid","header")}</span><button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><i></i><i></i></button></div></header>
 <div class="sheet" id="sheet">{navl}<a href="book">{T("The NOVAE book","O livro NOVAE")}</a>{AUD("solid","menu")}</div>
-<main id="main">{hero}{facts}{problem}{services}{work}{process}{seemeet}{faq}{audit}</main>{footer}{mbar}
+<main id="main">{hero}{facts}{problem}{services}{work}{process}{seemeet}{faq}{about}{audit}</main>{footer}{mbar}
 <div class="lb" id="lb" hidden><div class="lbc" role="dialog" aria-modal="true" aria-label="Film"><video id="vid" playsinline controls preload="none"></video><p id="vt"></p><button type="button" class="x" id="lbx" aria-label="Close film">×</button></div></div>
 <script>{JS}</script></body></html>'''
 os.makedirs(OUT,exist_ok=True); open(f'{OUT}/index.html','w').write(html); print(len(html))

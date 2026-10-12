@@ -154,3 +154,16 @@ details.more .did{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;
 @media (max-width:560px){.metrics.m4{grid-template-columns:1fr 1fr}.wkr .metric b{font-size:30px}}
 .pstrip a{align-items:start}.pstrip .pl{align-self:center}.pstrip .go{align-self:center}
 .pstrip .pn b{white-space:nowrap}@media (max-width:960px){.pstrip .pn b{font-size:clamp(22px,6.2vw,28px)}}.btn{text-align:center}
+/* ===== v12 · questions folded, founder full section ===== */
+.faqall>summary{list-style:none;cursor:pointer;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding-bottom:var(--s3);border-bottom:1px solid var(--line)}
+.faqall>summary::-webkit-details-marker{display:none}
+.faqall .fh{display:flex;flex-direction:column}.faqall .fh .eyebrow{display:block}.faqall .fh .h2{display:block;margin:0}
+.faqall .fx{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border:1.5px solid var(--ink);border-radius:999px;font:500 14.5px var(--sans);color:var(--ink);white-space:nowrap;flex:none}
+.faqall .fx:after{content:"";width:8px;height:8px;border-right:1.6px solid var(--gold);border-bottom:1.6px solid var(--gold);transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s}
+.faqall[open] .fx:after{transform:rotate(-135deg) translate(-2px,-2px)}
+.faqall>summary:hover .fx{background:var(--ink);color:#FCFAF4}.faqall>summary:focus-visible{outline:2px solid #C99A2E;outline-offset:6px}
+.faqall .faq{margin-top:0}.faqall .faq details:first-child{border-top:0}
+#faq.sec{padding:var(--s5) 0}
+#about .founder img{max-width:460px}
+@media (max-width:960px){#about .founder{gap:var(--s4)}#about .founder img{max-width:100%;aspect-ratio:4/5}#about .btn{width:100%}}
+@media (max-width:560px){.faqall .fx{padding:0 14px;font-size:13.5px}.faqall .fh .h2{font-size:clamp(28px,8vw,36px)}}
