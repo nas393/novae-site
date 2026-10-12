@@ -183,6 +183,19 @@ hero=hero.replace('</ul></div>\n<a class="bookcard','</ul>'+latest+'</div>\n<a c
 work=work.replace('</figure></div>\n<div class="wkr','</figure></div><div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>\n<div class="wkr',1)
 assert 'class="dots"' in work
 
+# 8 · Lumière proof: real numbers in a strip under the hero and at the top of the case
+mets=[m for m in PROOF.get('metrics',[]) if str(m.get('value','')).strip()]
+if mets:
+    hero=hero.replace(latest,'')
+    newres=(f'<div class="results has"><p class="eyebrow">{T(PROOF["period_en"],PROOF["period_pt"])}</p><div class="metrics m{len(mets)}">'
+        +''.join(f'<div class="metric"><b>{T(m["value"],m.get("value_pt") or m["value"])}</b><span class="ml">{T(m["label_en"],m["label_pt"])}</span></div>' for m in mets)
+        +f'</div><small>{T(PROOF["source_en"],PROOF["source_pt"])}</small></div>')
+    work=work.replace(res,'').replace('<div class="films2">',newres+'<div class="films2">',1)
+    sm=[m for m in mets if m.get('strip')]
+    facts=(f'<section class="pstrip" aria-label="Lumière Beauty"><div class="wrap"><a href="#work" data-cta="proof-strip"><span class="pl"><img src="img/lumiere-logo.jpg" alt="" width="40" height="40"><span><i>{T("Latest launch · new account","Último lançamento · conta nova")}</i>Lumière Beauty</span></span>'
+        +''.join(f'<span class="pn"><b>{T(m["value"],m.get("value_pt") or m["value"])}</b><span class="ml">{T(m["label_en"],m["label_pt"])}</span></span>' for m in sm)
+        +f'<span class="go">{T("See the case →","Ver o caso →")}</span></a></div></section>')
+
 FONTS=''.join(f"@font-face{{font-family:'{f}';font-style:{st};font-weight:{w};font-display:swap;src:url(fonts/{u}) format('woff2')}}" for f,st,w,u in [('EB Garamond','normal',400,'eb-garamond-400-normal.woff2'),('EB Garamond','italic',400,'eb-garamond-400-italic.woff2'),('EB Garamond','normal',500,'eb-garamond-500-normal.woff2'),('Inter','normal',400,'inter-latin-400-normal.woff2'),('Inter','normal',500,'inter-latin-500-normal.woff2')])
 CSS=open(f'{D}/site.css').read()+open(f'{D}/site10.css').read(); JS=open(f'{D}/site.js').read()+open(f'{D}/site10.js').read()
 LD=json.dumps({"@context":"https://schema.org","@type":"ProfessionalService","name":"NOVAE","description":"Estúdio de marketing e marca em Luanda: posicionamento, identidade, conteúdo, websites e crescimento.","slogan":"Position. Presence. Growth.","url":URL,"image":URL+"og-image.jpg","areaServed":"Angola","address":{"@type":"PostalAddress","addressLocality":"Luanda","addressCountry":"AO"},"founder":{"@type":"Person","name":"Lara Abou Saleh"},"sameAs":[f"https://instagram.com/{IG}"],"knowsLanguage":["pt","en"]},ensure_ascii=False)
@@ -193,8 +206,8 @@ html=f'''<!doctype html><html lang="pt-AO" data-lang="pt"><head><meta charset="u
 <meta name="description" content="A NOVAE posiciona fundadores, marcas pessoais e negócios em crescimento em Angola: posicionamento, identidade, conteúdo, websites e campanhas. Auditoria gratuita, resposta em 24 horas.">
 <meta name="theme-color" content="#FAF7F1"><link rel="canonical" href="{URL}">
 <meta property="og:type" content="website"><meta property="og:locale" content="pt_AO"><meta property="og:locale:alternate" content="en_US"><meta property="og:url" content="{URL}"><meta property="og:title" content="NOVAE · Muitas marcas são vistas. Poucas são escolhidas.">
-<meta property="og:description" content="Estúdio de marketing e marca em Luanda. Auditoria de posicionamento gratuita, resposta em 24 horas."><meta property="og:image" content="{URL}og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon.ico" sizes="48x48"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
+<meta property="og:description" content="Lumière Beauty, uma conta nova: 12 602 visualizações em 14 dias e a primeira venda na primeira semana. Auditoria de posicionamento gratuita, resposta em 24 horas."><meta property="og:image" content="{URL}og-image.jpg?v=2"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta property="og:image:alt" content="NOVAE · Lumière Beauty: 12 602 visualizações em 14 dias, primeira venda na primeira semana"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon.ico" sizes="48x48"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="fonts/eb-garamond-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="img/book-cover.webp" as="image" type="image/webp">
 <script type="application/ld+json">{LD}</script>
 <style>{FONTS}{CSS}</style></head><body>

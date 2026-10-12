@@ -1,11 +1,43 @@
 {
-  "_note": "Lumière launch proof. Fill only with real, permitted data. Empty values are not shown on the site.",
-  "quote": {"en": "", "pt": "", "author": "", "role_en": "Founder, Lumière Beauty", "role_pt": "Fundadora, Lumière Beauty"},
-  "metrics": [
-    {"value": "", "label_en": "accounts reached in the first week", "label_pt": "contas alcançadas na primeira semana"},
-    {"value": "", "label_en": "days to the first sale", "label_pt": "dias até à primeira venda"},
-    {"value": "", "label_en": "views on the launch posts", "label_pt": "visualizações nas publicações de lançamento"}
-  ],
-  "source_en": "Instagram Insights, first week after launch",
-  "source_pt": "Instagram Insights, primeira semana após o lançamento"
+ "_note": "Lumière launch proof. Real data only. Instagram Insights screenshot, 14 days (28 Sep - 11 Oct 2026). First sale reported by the client.",
+ "quote": {
+  "en": "",
+  "pt": "",
+  "author": "",
+  "role_en": "Founder, Lumière Beauty",
+  "role_pt": "Fundadora, Lumière Beauty"
+ },
+ "period_en": "A brand-new account · first 14 days on Instagram",
+ "period_pt": "Uma conta nova · primeiros 14 dias no Instagram",
+ "metrics": [
+  {
+   "value": "12,602",
+   "value_pt": "12 602",
+   "label_en": "views in 14 days",
+   "label_pt": "visualizações em 14 dias",
+   "strip": true
+  },
+  {
+   "value": "2,106",
+   "value_pt": "2 106",
+   "label_en": "accounts reached",
+   "label_pt": "contas alcançadas",
+   "strip": true
+  },
+  {
+   "value": "51%",
+   "value_pt": "51%",
+   "label_en": "of views from people not yet following",
+   "label_pt": "das visualizações vieram de quem ainda não seguia"
+  },
+  {
+   "value": "Week 1",
+   "value_pt": "Semana 1",
+   "label_en": "first sale",
+   "label_pt": "primeira venda",
+   "strip": true
+  }
+ ],
+ "source_en": "Source: Instagram Insights, 28 Sep – 11 Oct 2026. First sale reported by Lumière.",
+ "source_pt": "Fonte: Instagram Insights, 28 set – 11 out 2026. Primeira venda indicada pela Lumière."
 }
