@@ -167,3 +167,13 @@ details.more .did{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;
 #about .founder img{max-width:460px}
 @media (max-width:960px){#about .founder{gap:var(--s4)}#about .founder img{max-width:100%;aspect-ratio:4/5}#about .btn{width:100%}}
 @media (max-width:560px){.faqall .fx{padding:0 14px;font-size:13.5px}.faqall .fh .h2{font-size:clamp(28px,8vw,36px)}}
+/* ===== v13 · hero pillars under a gold line ===== */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);margin-top:var(--s4);padding-top:var(--s3);border-top:1px solid var(--gold2);max-width:640px}
+.pillars a{display:flex;flex-direction:column;gap:3px;padding:2px 18px 4px;border-left:1px solid var(--line);text-decoration:none;color:var(--ink);transition:color .2s}
+.pillars a:first-child{padding-left:0;border-left:0}
+.pillars i{font:italic 400 16px var(--serif);color:var(--gold)}
+.pillars b{font:400 22px/1.15 var(--serif)}
+.pillars .pd{font-size:13.5px;line-height:1.4;color:var(--mute)}
+.pillars a:hover b{text-decoration:underline;text-decoration-color:var(--gold2);text-underline-offset:4px}
+.pillars a:focus-visible{outline:2px solid #C99A2E;outline-offset:4px}
+@media (max-width:560px){.pillars{margin-top:var(--s3)}.pillars a{padding:0 10px}.pillars b{font-size:18px}.pillars .pd{font-size:12px}.pillars i{font-size:14px}}

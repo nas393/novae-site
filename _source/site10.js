@@ -17,3 +17,5 @@ document.querySelectorAll('details.inc,details.more').forEach(function(d){d.addE
 })();
 (function(){var s=document.querySelector('#work .shots'),d=document.querySelectorAll('#work .dots i');if(!s||!d.length)return;
  var t;s.addEventListener('scroll',function(){cancelAnimationFrame(t);t=requestAnimationFrame(function(){var f=s.querySelectorAll('figure'),w=f[1]?f[1].offsetLeft-f[0].offsetLeft:1,i=Math.round(s.scrollLeft/w);if(s.scrollLeft+s.clientWidth>=s.scrollWidth-4)i=f.length-1;d.forEach(function(x,j){x.classList.toggle('on',j===i)})})},{passive:true})})();
+// hero pillars open the matching service tab
+document.querySelectorAll('.pillars [data-tab]').forEach(function(a){a.addEventListener('click',function(){var t=document.getElementById(a.dataset.tab);if(t)t.click()})});

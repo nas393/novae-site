@@ -205,13 +205,18 @@ _h_en='You don’t need more posts. You need a <span class=mk>position.</span>';
 _l_en='When people can’t see why you’re different, they compare prices. We decide what your brand should own, then every post and every page says it.'
 _l_pt='Quando não percebem porque é diferente, comparam preços. Decidimos o que a sua marca deve ocupar e depois cada publicação e cada página dizem isso.'
 for o in (_h_en,_h_pt,_l_en,_l_pt): assert o in problem
-problem=(problem.replace(_h_en,'Followers don’t pay. <span class=mk>Clients do.</span>').replace(_h_pt,'Seguidores não pagam. <span class=mk>Clientes pagam.</span>')
-  .replace(_l_en,'Being visible without a clear reason to choose you ends in a price comparison. We define that reason first, then build everything around it.')
-  .replace(_l_pt,'Ser visto sem uma razão clara para ser escolhido acaba numa comparação de preços. Definimos essa razão primeiro e construímos tudo à volta dela.'))
 audit=audit.replace(lara,'')
 faq=(f'<section class="sec" id="faq" style="background:var(--white)"><div class="wrap"><details class="faqall rv"><summary><span class="fh"><span class="eyebrow">{T("Questions","Perguntas")}</span><h2 class="h2">{T("Before you write.","Antes de escrever.")}</h2></span>'
      f'<span class="fx">{T(str(len(FAQ))+" answers",str(len(FAQ))+" respostas")}</span></summary><div class="faq">'
      +''.join(f'<details><summary>{T(a,b)}</summary><p>{T(c,d)}</p></details>' for a,b,c,d in FAQ)+'</div></details></div></section>')
+
+# 10 · old problem copy back with a new label; three pillars under a gold line in the hero
+assert T("The problem","O problema") in problem
+problem=problem.replace(T("The problem","O problema"),T("What most brands miss","O que a maioria das marcas não vê"))
+PIL=[('position','I','Position','Posicionamento','Know what you own','Saiba o que ocupa'),('presence','II','Presence','Presença','Brand, content and website','Marca, conteúdo e website'),('growth','III','Growth','Crescimento','Turn attention into clients','Transformar atenção em clientes')]
+pillars='<div class="pillars">'+''.join(f'<a href="#services" data-tab="tb-{k}" data-cta="hero-pillar-{k}"><i>{n}</i><b>{T(en,pt)}</b><span class="pd">{T(den,dpt)}</span></a>' for k,n,en,pt,den,dpt in PIL)+'</div>'
+assert '</ul></div>\n<a class="bookcard' in hero
+hero=hero.replace('</ul></div>\n<a class="bookcard','</ul>'+pillars+'</div>\n<a class="bookcard',1)
 
 FONTS=''.join(f"@font-face{{font-family:'{f}';font-style:{st};font-weight:{w};font-display:swap;src:url(fonts/{u}) format('woff2')}}" for f,st,w,u in [('EB Garamond','normal',400,'eb-garamond-400-normal.woff2'),('EB Garamond','italic',400,'eb-garamond-400-italic.woff2'),('EB Garamond','normal',500,'eb-garamond-500-normal.woff2'),('Inter','normal',400,'inter-latin-400-normal.woff2'),('Inter','normal',500,'inter-latin-500-normal.woff2')])
 CSS=open(f'{D}/site.css').read()+open(f'{D}/site10.css').read(); JS=open(f'{D}/site.js').read()+open(f'{D}/site10.js').read()
