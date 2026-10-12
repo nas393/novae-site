@@ -176,6 +176,13 @@ seemeet=f'''<section class="sec bookband" id="see"><div class="wrap"><div class=
 lara=f'''<div class="lara" id="about"><img src="img/lara-portrait.jpg" alt="Lara Abou Saleh, founder of NOVAE" loading="lazy" width="120" height="150"><div><b>Lara Abou Saleh</b><span>{T("Founder · MBA in Marketing","Fundadora · MBA em Marketing")}</span><i>{T("“I read every message myself.”","“Leio cada mensagem pessoalmente.”")}</i></div></div>'''
 audit=audit.replace('<ul class="recv">',lara+'<ul class="recv">')
 
+# 7 · phone: proof in the hero, swipe dots for Lumière
+latest=f'<a class="latest" href="#work" data-cta="hero-latest"><img src="img/lumiere-logo.jpg" alt="" width="44" height="44"><span class="lt">{T("Latest launch","Último lançamento")}<b>Lumière Beauty →</b></span></a>'
+assert '</ul></div>\n<a class="bookcard' in hero
+hero=hero.replace('</ul></div>\n<a class="bookcard','</ul>'+latest+'</div>\n<a class="bookcard',1)
+work=work.replace('</figure></div>\n<div class="wkr','</figure></div><div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>\n<div class="wkr',1)
+assert 'class="dots"' in work
+
 FONTS=''.join(f"@font-face{{font-family:'{f}';font-style:{st};font-weight:{w};font-display:swap;src:url(fonts/{u}) format('woff2')}}" for f,st,w,u in [('EB Garamond','normal',400,'eb-garamond-400-normal.woff2'),('EB Garamond','italic',400,'eb-garamond-400-italic.woff2'),('EB Garamond','normal',500,'eb-garamond-500-normal.woff2'),('Inter','normal',400,'inter-latin-400-normal.woff2'),('Inter','normal',500,'inter-latin-500-normal.woff2')])
 CSS=open(f'{D}/site.css').read()+open(f'{D}/site10.css').read(); JS=open(f'{D}/site.js').read()+open(f'{D}/site10.js').read()
 LD=json.dumps({"@context":"https://schema.org","@type":"ProfessionalService","name":"NOVAE","description":"Estúdio de marketing e marca em Luanda: posicionamento, identidade, conteúdo, websites e crescimento.","slogan":"Position. Presence. Growth.","url":URL,"image":URL+"og-image.jpg","areaServed":"Angola","address":{"@type":"PostalAddress","addressLocality":"Luanda","addressCountry":"AO"},"founder":{"@type":"Person","name":"Lara Abou Saleh"},"sameAs":[f"https://instagram.com/{IG}"],"knowsLanguage":["pt","en"]},ensure_ascii=False)

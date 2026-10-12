@@ -96,3 +96,40 @@ details.more .did{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;
  .hero .bookcard{width:min(200px,58%)}
 }
 .tpl .price .pv{font:400 22px/1.2 var(--serif);margin-right:auto}.tpl .price small{display:block;font:13px/1.4 var(--sans);color:var(--mute);margin-top:2px}
+/* ===== v10.1 · phone and tablet: one idea per screen ===== */
+.latest,.dots{display:none}
+@media (max-width:960px){
+ /* hero: words, one action, and the latest proof; the book lives in See & read */
+ .hero .bookcard{display:none}
+ .hero{padding:clamp(28px,6vw,48px) 0 40px}
+ .hero:before{-webkit-mask:linear-gradient(180deg,transparent 10%,#000 100%);mask:linear-gradient(180deg,transparent 10%,#000 100%);opacity:.45}
+ .hero .ctas .btn:not(.solid){display:none}
+ .latest{display:flex;align-items:center;gap:12px;margin-top:var(--s4);padding:8px 16px 8px 8px;width:max-content;max-width:100%;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.85);text-decoration:none;color:var(--ink);box-shadow:0 10px 24px -18px rgba(0,0,0,.5)}
+ .latest img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+ .latest .lt{display:flex;flex-direction:column;font:500 11.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+ .latest .lt b{font:400 19px/1.2 var(--serif);letter-spacing:0;text-transform:none;color:var(--ink)}
+ .latest:focus-visible{outline:2px solid #C99A2E;outline-offset:2px}
+ /* the three facts repeat what the hero and the audit already say */
+ .facts{display:none}
+ .wk{gap:var(--s3)}
+ /* the results box returns when there are numbers to show */
+ .wkr .results:not(.has){display:none}
+ /* audit: the form right after the promise */
+ .auditsec .wrap>.rv:first-child{display:contents}
+ .auditsec .wrap>.formcard{order:4;margin-top:var(--s2)}
+ .auditsec .wrap>.rv:first-child>.eyebrow{order:1}.auditsec .wrap>.rv:first-child>.h2{order:2}.auditsec .wrap>.rv:first-child>.lead{order:3}
+ .auditsec .wrap>.rv:first-child>.lara{order:5;margin-top:var(--s4)}.auditsec .wrap>.rv:first-child>.recv{order:6;margin-top:var(--s2)}
+ .auditsec .wrap{gap:0}
+}
+@media (max-width:560px){.latest .lt b{font-size:18px}
+ /* Lumière: large posts you swipe, not thumbnails */
+ .shots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-20px;padding:0 20px 4px;scroll-padding-inline:20px;scrollbar-width:none}
+ .shots::-webkit-scrollbar{display:none}
+ .shots figure{flex:0 0 min(76%,340px);scroll-snap-align:start}
+ .shots img{border-radius:12px}
+ .shots figcaption{font-size:13px;margin-top:10px}
+ .dots{display:flex;justify-content:center;gap:7px;margin-top:6px}
+ .dots i{width:6px;height:6px;border-radius:50%;background:#D8CFBF;transition:background .2s,width .2s}
+ .dots i.on{width:18px;border-radius:3px;background:var(--gold)}
+}
+@media (max-width:560px){.micro li:last-child{flex-basis:100%}.micro li:last-child:before{content:none}}
