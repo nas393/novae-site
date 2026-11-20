@@ -76,14 +76,14 @@ else:
 quote_html=''
 if q.get('en') and q.get('author'):
     quote_html=f'<blockquote class="quote rv">{T("“"+q["en"]+"”","“"+(q.get("pt") or q["en"])+"”")}<cite>{q["author"]} · {T(q.get("role_en",""),q.get("role_pt",""))}</cite></blockquote>'
-LS=[('lumiere-logo.jpg','The logo','O logótipo','Lumière Beauty logo: an L in a circle with a leafy branch'),('lumiere-post-2.jpg','Who we are','Quem somos','Lumière launch post: who we are'),('lumiere-post-3.jpg','Coming soon','Em breve','Lumière launch post: something beautiful is coming soon')]
+LS=[('lumiere-logo.webp','The logo','O logótipo','Lumière Beauty logo: an L in a circle with a leafy branch'),('lumiere-post-2.webp','Who we are','Quem somos','Lumière launch post: who we are'),('lumiere-post-3.webp','Coming soon','Em breve','Lumière launch post: something beautiful is coming soon')]
 work=f'''<section class="sec" id="work" style="background:var(--white)"><div class="wrap"><div class="rv"><p class="eyebrow">{T("Case study","Caso de estudo")}</p><h2 class="h2">Lumière Beauty</h2>
 <p class="lead">{T("A beauty, skin and self-care space in Luanda. We built the brand before the doors opened.","Um espaço de beleza, pele e autocuidado em Luanda. Construímos a marca antes de as portas abrirem.")}</p></div>
 <div class="case"><dl class="rv"><dt>{T("The challenge","O desafio")}</dt><dd>{T("Be noticed, and trusted, before opening day.","Ser notada, e merecer confiança, antes do dia da abertura.")}</dd>
 <dt>{T("The position","A posição")}</dt><dd class="q">{T("“More than a <span class=mk>salon.</span>”","“Mais do que um <span class=mk>salão.</span>”")}</dd><dd>{T("Expert care, quality treatments and selected products in one place: look good, feel good, feel confident.","Cuidado especializado, tratamentos de qualidade e produtos escolhidos num só lugar: ficar bem, sentir-se bem, sentir-se confiante.")}</dd>
 <dt>{T("What we did","O que fizemos")}</dt><dd><ul class="did"><li>{T("Positioning","Posicionamento")}</li><li>{T("Logo &amp; identity","Logótipo e identidade")}</li><li>{T("Instagram launch","Lançamento no Instagram")}</li><li>{T("First posts","Primeiras publicações")}</li><li>{T("Two films","Dois filmes")}</li></ul></dd></dl>
 <div><div class="shots rv">'''+''.join(f'<figure><img src="img/{f}" alt="{alt}" loading="lazy" decoding="async" width="600" height="750"><figcaption>{T(a,b)}</figcaption></figure>' for f,a,b,alt in LS)+f'''</div>
-<div class="films2 rv">{film('lumiere-film.mp4','lumiere-film.mp4','lumiere-film-cover-en.jpg','lumiere-film-cover-pt.jpg','Launch film','Filme de lançamento','15 s')}{film('lumiere-xray-en.mp4','lumiere-xray-pt.mp4','lumiere-xray-cover-en.jpg','lumiere-xray-cover-pt.jpg','Brand X-ray','Raio-X da marca','15 s')}</div>
+<div class="films2 rv">{film('lumiere-film.mp4','lumiere-film.mp4','lumiere-film-cover-en.webp','lumiere-film-cover-pt.webp','Launch film','Filme de lançamento','15 s')}{film('lumiere-xray-en.mp4','lumiere-xray-pt.mp4','lumiere-xray-cover-en.webp','lumiere-xray-cover-pt.webp','Brand X-ray','Raio-X da marca','15 s')}</div>
 {res}{quote_html}<p class="rv" style="margin:18px 0 0"><a class="link" href="https://instagram.com/lumiere.beauty.ao" target="_blank" rel="noopener">{T("See @lumiere.beauty.ao on Instagram →","Ver @lumiere.beauty.ao no Instagram →")}</a></p></div></div></div></section>'''
 
 HOW=[('Audit','Auditoria','Free. Your brand, audience and competitors, studied.','Gratuita. A sua marca, o seu público e a concorrência, estudados.','What to fix first, and a clear proposal.','O que corrigir primeiro e uma proposta clara.'),
@@ -103,7 +103,7 @@ book=f'''<section class="sec bookband"><div class="wrap"><a class="bookcard rv" 
 <p class="lead">{T("Our studio told as a hardcover book: real page turns, three covers to choose from, two minutes to read. It is how we show what a brand experience can feel like.","O nosso estúdio contado como um livro de capa dura: páginas que viram, três capas à escolha, dois minutos de leitura. É assim que mostramos o que uma experiência de marca pode ser.")}</p>
 <div class="ctas" style="margin-top:28px"><a class="btn solid" href="book" data-src="band-btn">{T("Open the book →","Abrir o livro →")}</a></div></div></div></section>'''
 
-about=f'''<section class="sec" id="about"><div class="wrap founder"><img class="rv" src="img/lara-portrait.jpg" alt="Lara Abou Saleh, founder of NOVAE" loading="lazy" decoding="async" width="600" height="750">
+about=f'''<section class="sec" id="about"><div class="wrap founder"><img class="rv" src="img/lara-portrait.webp" alt="Lara Abou Saleh, founder of NOVAE" loading="lazy" decoding="async" width="600" height="750">
 <div class="rv"><p class="eyebrow">{T("Founder","Fundadora")}</p><h2 class="h2">Lara Abou Saleh</h2><p class="lead">{T("Founder of NOVAE. MBA in Marketing. Builds every brand like her own.","Fundadora da NOVAE. MBA em Marketing. Constrói cada marca como se fosse a sua.")}</p>
 <p class="sig">{T("“Write to me. I read every message myself.”","“Escreva-me. Leio cada mensagem pessoalmente.”")}</p>
 '''+waL("Hello Lara, I’d like to talk about my brand.","Olá Lara, gostaria de falar sobre a minha marca.","btn solid",WA_ICON+" "+T("Write to Lara","Escrever à Lara"),'founder')+'</div></div></section>'
@@ -159,7 +159,7 @@ work=f'''<section class="sec" id="work" style="background:var(--white)"><div cla
 <p class="lead">{T("A beauty, skin and self-care space in Luanda. We built the brand before the doors opened.","Um espaço de beleza, pele e autocuidado em Luanda. Construímos a marca antes de as portas abrirem.")}</p></div>
 <div class="wk"><div class="shots rv">'''+''.join(f'<figure><img src="img/{f}" alt="{alt}" loading="lazy" decoding="async" width="600" height="750"><figcaption>{T(a,b)}</figcaption></figure>' for f,a,b,alt in LS)+f'''</div>
 <div class="wkr rv"><p class="q">{T("“More than a <span class=mk>salon.</span>”","“Mais do que um <span class=mk>salão.</span>”")}</p>
-<div class="films2">{film('lumiere-film.mp4','lumiere-film.mp4','lumiere-film-cover-en.jpg','lumiere-film-cover-pt.jpg','Launch film','Filme de lançamento','15 s')}{film('lumiere-xray-en.mp4','lumiere-xray-pt.mp4','lumiere-xray-cover-en.jpg','lumiere-xray-cover-pt.jpg','Brand X-ray','Raio-X da marca','15 s')}</div>
+<div class="films2">{film('lumiere-film.mp4','lumiere-film.mp4','lumiere-film-cover-en.webp','lumiere-film-cover-pt.webp','Launch film','Filme de lançamento','15 s')}{film('lumiere-xray-en.mp4','lumiere-xray-pt.mp4','lumiere-xray-cover-en.webp','lumiere-xray-cover-pt.webp','Brand X-ray','Raio-X da marca','15 s')}</div>
 <details class="more"><summary>{T("Read the case","Ler o caso")}</summary><dl><dt>{T("The challenge","O desafio")}</dt><dd>{T("Be noticed, and trusted, before opening day.","Ser notada, e merecer confiança, antes do dia da abertura.")}</dd>
 <dt>{T("The position","A posição")}</dt><dd>{T("Expert care, quality treatments and selected products in one place: look good, feel good, feel confident.","Cuidado especializado, tratamentos de qualidade e produtos escolhidos num só lugar: ficar bem, sentir-se bem, sentir-se confiante.")}</dd>
 <dt>{T("What we did","O que fizemos")}</dt><dd><ul class="did"><li>{T("Positioning","Posicionamento")}</li><li>{T("Logo &amp; identity","Logótipo e identidade")}</li><li>{T("Instagram launch","Lançamento no Instagram")}</li><li>{T("First posts","Primeiras publicações")}</li><li>{T("Two films","Dois filmes")}</li></ul></dd></dl></details>
@@ -173,11 +173,11 @@ seemeet=f'''<section class="sec bookband" id="see"><div class="wrap"><div class=
 <div class="sr"><a class="bookcard rv" href="book" data-src="band"><div class="bk"><picture><source srcset="img/book-cover.webp" type="image/webp"><img src="img/book-cover.jpg" alt="The NOVAE book" width="518" height="726" loading="lazy"></picture></div><p>{T("Open the book","Abrir o livro")}<b>{T("2 min →","2 min →")}</b></p></a>
 <div class="reel rv">'''+''.join(film(f'novae-{k}-en.mp4',f'novae-{k}-pt.mp4',f'novae-{k}-cover-en.jpg',f'novae-{k}-cover-pt.jpg',a,b,d,'') for k,a,b,d in FILMS)+'</div></div></div></section>'
 # 6 · audit with Lara beside the form
-lara=f'''<div class="lara" id="about"><img src="img/lara-portrait.jpg" alt="Lara Abou Saleh, founder of NOVAE" loading="lazy" width="120" height="150"><div><b>Lara Abou Saleh</b><span>{T("Founder · MBA in Marketing","Fundadora · MBA em Marketing")}</span><i>{T("“I read every message myself.”","“Leio cada mensagem pessoalmente.”")}</i></div></div>'''
+lara=f'''<div class="lara" id="about"><img src="img/lara-portrait.webp" alt="Lara Abou Saleh, founder of NOVAE" loading="lazy" width="120" height="150"><div><b>Lara Abou Saleh</b><span>{T("Founder · MBA in Marketing","Fundadora · MBA em Marketing")}</span><i>{T("“I read every message myself.”","“Leio cada mensagem pessoalmente.”")}</i></div></div>'''
 audit=audit.replace('<ul class="recv">',lara+'<ul class="recv">')
 
 # 7 · phone: proof in the hero, swipe dots for Lumière
-latest=f'<a class="latest" href="#work" data-cta="hero-latest"><img src="img/lumiere-logo.jpg" alt="" width="44" height="44"><span class="lt">{T("Latest launch","Último lançamento")}<b>Lumière Beauty →</b></span></a>'
+latest=f'<a class="latest" href="#work" data-cta="hero-latest"><img src="img/lumiere-logo.webp" alt="" width="44" height="44"><span class="lt">{T("Latest launch","Último lançamento")}<b>Lumière Beauty →</b></span></a>'
 assert '</ul></div>\n<a class="bookcard' in hero
 hero=hero.replace('</ul></div>\n<a class="bookcard','</ul>'+latest+'</div>\n<a class="bookcard',1)
 work=work.replace('</figure></div>\n<div class="wkr','</figure></div><div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>\n<div class="wkr',1)
@@ -192,7 +192,7 @@ if mets:
         +f'</div><small>{T(PROOF["source_en"],PROOF["source_pt"])}</small></div>')
     work=work.replace(res,'').replace('<div class="films2">',newres+'<div class="films2">',1)
     sm=[m for m in mets if m.get('strip')]
-    facts=(f'<section class="pstrip" aria-label="Lumière Beauty"><div class="wrap"><a href="#work" data-cta="proof-strip"><span class="pl"><img src="img/lumiere-logo.jpg" alt="" width="40" height="40"><span><i>{T("Latest launch · new account","Último lançamento · conta nova")}</i>Lumière Beauty</span></span>'
+    facts=(f'<section class="pstrip" aria-label="Lumière Beauty"><div class="wrap"><a href="#work" data-cta="proof-strip"><span class="pl"><img src="img/lumiere-logo.webp" alt="" width="40" height="40"><span><i>{T("Latest launch · new account","Último lançamento · conta nova")}</i>Lumière Beauty</span></span>'
         +''.join(f'<span class="pn"><b>{T(m["value"],m.get("value_pt") or m["value"])}</b><span class="ml">{T(m["label_en"],m["label_pt"])}</span></span>' for m in sm)
         +f'<span class="go">{T("See the case →","Ver o caso →")}</span></a></div></section>')
 
@@ -241,7 +241,7 @@ sm=[m for m in mets if m.get('strip')]
 _ls=''.join(f'<figure><img src="img/{f}" alt="{alt}" loading="lazy" decoding="async" width="600" height="750"><figcaption>{T(a,b)}</figcaption></figure>' for f,a,b,alt in LS)
 _nf=[m for m in mets if not m.get('strip')]
 work=(f'<section class="sec" id="work" style="background:var(--white)"><div class="wrap"><p class="eyebrow rv">{T("Case study","Caso de estudo")}</p>'
-  f'<details class="case2 rv"><summary class="ps"><span class="pl"><img src="img/lumiere-logo.jpg" alt="" width="48" height="48"><span class="pln"><i>{T("Latest launch · new account","Último lançamento · conta nova")}</i>Lumière Beauty</span></span>'
+  f'<details class="case2 rv"><summary class="ps"><span class="pl"><img src="img/lumiere-logo.webp" alt="" width="48" height="48"><span class="pln"><i>{T("Latest launch · new account","Último lançamento · conta nova")}</i>Lumière Beauty</span></span>'
   +''.join(f'<span class="pn"><b>{T(m["value"],m.get("value_pt") or m["value"])}</b><span class="ml">{T(m["label_en"],m["label_pt"])}</span></span>' for m in sm)
   +f'<span class="go"><span class="o">{T("See the case","Ver o caso")}</span><span class="c">{T("Close the case","Fechar o caso")}</span></span>'
   +f'<small class="src">{T(PROOF["source_en"],PROOF["source_pt"])}</small></summary>'
@@ -249,7 +249,7 @@ work=(f'<section class="sec" id="work" style="background:var(--white)"><div clas
   f'<div class="wk"><div class="shots">{_ls}</div><div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>'
   f'<div class="wkr"><p class="q">{T("“More than a <span class=mk>salon.</span>”","“Mais do que um <span class=mk>salão.</span>”")}</p>'
   +''.join(f'<p class="nf"><b>{T(m["value"],m.get("value_pt") or m["value"])}</b> {T(m["label_en"],m["label_pt"])}</p>' for m in _nf)
-  +f'<div class="films2">{film("lumiere-film.mp4","lumiere-film.mp4","lumiere-film-cover-en.jpg","lumiere-film-cover-pt.jpg","Launch film","Filme de lançamento","15 s")}{film("lumiere-xray-en.mp4","lumiere-xray-pt.mp4","lumiere-xray-cover-en.jpg","lumiere-xray-cover-pt.jpg","Brand X-ray","Raio-X da marca","15 s")}</div>'
+  +f'<div class="films2">{film("lumiere-film.mp4","lumiere-film.mp4","lumiere-film-cover-en.webp","lumiere-film-cover-pt.webp","Launch film","Filme de lançamento","15 s")}{film("lumiere-xray-en.mp4","lumiere-xray-pt.mp4","lumiere-xray-cover-en.webp","lumiere-xray-cover-pt.webp","Brand X-ray","Raio-X da marca","15 s")}</div>'
   f'<dl class="cdl"><dt>{T("The challenge","O desafio")}</dt><dd>{T("Be noticed, and trusted, before opening day.","Ser notada, e merecer confiança, antes do dia da abertura.")}</dd>'
   f'<dt>{T("The position","A posição")}</dt><dd>{T("Expert care, quality treatments and selected products in one place: look good, feel good, feel confident.","Cuidado especializado, tratamentos de qualidade e produtos escolhidos num só lugar: ficar bem, sentir-se bem, sentir-se confiante.")}</dd>'
   f'<dt>{T("What we did","O que fizemos")}</dt><dd><ul class="did"><li>{T("Positioning","Posicionamento")}</li><li>{T("Logo &amp; identity","Logótipo e identidade")}</li><li>{T("Instagram launch","Lançamento no Instagram")}</li><li>{T("First posts","Primeiras publicações")}</li><li>{T("Two films","Dois filmes")}</li></ul></dd></dl>'
