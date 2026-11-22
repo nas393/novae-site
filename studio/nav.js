@@ -6,7 +6,7 @@
 (function(){
   if(window.__lnav)return;window.__lnav=1;
   var d=document,b=d.body,path=location.pathname.replace(/\/index\.html$/,"/");
-  var PAGES=[["/","Site","novae-mu.vercel.app"],["/studio","Studio","Reel + Post Maker"]];
+  var PAGES=[["/","Site","novae-mu.vercel.app"],["/studio","Studio","Reel + Post Maker"],["/posts","Posts","9 launch posts"],["/guide","Guide","10 steps, free guide"]];
   var here=function(h){return h==="/"?path==="/":path.indexOf(h.replace(/\/$/,""))===0;};
   var cur=function(h){return here(h)?' aria-current="page"':"";};
   var ico={
