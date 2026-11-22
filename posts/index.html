@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NOVAE · Posts</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#121214">
+<style>
+@font-face{font-family:'EB Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/eb-garamond-500-normal.woff2) format('woff2')}
+@font-face{font-family:'EB Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/eb-garamond-400-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/inter-latin-500-normal.woff2) format('woff2')}
+:root{--bg:#121214;--card:#1b1a17;--line:#2e2a24;--ink:#F3EAD6;--mute:#a39b8e;--gold:#C9A24A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:560px;margin:0 auto;padding:16px 14px 0}
+.logo{font:500 20px 'EB Garamond',Georgia,serif;letter-spacing:.42em;color:var(--ink);text-decoration:none}
+.top nav{display:flex;gap:6px;flex-wrap:wrap}
+.top nav a,.top button{min-height:40px;display:inline-flex;align-items:center;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:500 12px Inter,sans-serif;letter-spacing:.06em;text-decoration:none;cursor:pointer}
+.top button b{color:var(--gold)}
+header{text-align:center;padding:18px 14px 6px;max-width:560px;margin:0 auto}
+h1{font:400 30px/1.1 'EB Garamond',Georgia,serif;margin:0 0 8px}
+.how{color:var(--mute);font-size:14px;margin:0 0 14px}
+#zip{min-height:48px;width:100%;background:var(--gold);color:#1D1B18;border:0;border-radius:12px;font:600 13px Inter,sans-serif;letter-spacing:.12em;cursor:pointer}
+section{max-width:560px;margin:0 auto 34px;padding:0 14px}
+h2{font:600 12px Inter,sans-serif;letter-spacing:.18em;color:var(--gold);margin:22px 0 8px;text-transform:uppercase}
+.pv{width:100%;aspect-ratio:4/5;background:#0c0c0d;display:block;border:1px solid var(--line);border-radius:6px}
+.th{display:flex;gap:8px;overflow-x:auto;padding:10px 0}
+.th img{width:84px;height:105px;object-fit:cover;flex:none;border:2px solid transparent;border-radius:4px;opacity:.75;cursor:pointer;background:#222}
+.th img.on{border-color:var(--gold);opacity:1}
+.th img:focus-visible,.ct button:focus-visible,.top a:focus-visible,.top button:focus-visible,#zip:focus-visible,.dl:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.more{flex:none;width:84px;height:105px;border:1px dashed var(--line);border-radius:4px;background:transparent;color:var(--mute);font:500 11px Inter,sans-serif;cursor:pointer}
+.ct{display:flex;flex-wrap:wrap;gap:6px}
+.ct button{min-height:40px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:0 12px;font:600 11px Inter,sans-serif;letter-spacing:.06em;cursor:pointer}
+.ct button.on{background:var(--ink);color:#121214}
+.dl{display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--ink);text-decoration:none;font:600 13px Inter,sans-serif;letter-spacing:.12em}
+.cr{color:var(--mute);font-size:12px;margin-top:6px;min-height:18px}
+.note{color:var(--mute);font-size:12px}
+</style>
+</head>
+<body>
+<div class="top"><a class="logo" href="/">NOVAE</a><nav aria-label="NOVAE tools"><a href="/studio">Studio</a><a href="/guide">Guia</a><button id="lang" type="button"></button></nav></div>
+<header><h1 id="t1"></h1><p class="how" id="how"></p><button id="zip" type="button"></button></header>
+<div id="app"></div>
+<script src="/posts/jszip.min.js"></script>
+<script>
+/* 9 launch posts for @novae.brandstudio. Easy words, PT (Angola) or EN.
+   Photos: a few picked from Unsplash + live results from the Studio gallery (Openverse, Wikimedia, Pexels when its key is saved in Studio). */
+const UN=(id,who)=>({src:`https://images.unsplash.com/photo-${id}?w=1080&h=1350&fit=crop&crop=faces,entropy&auto=format&q=90`,thumb:`https://images.unsplash.com/photo-${id}?w=168&h=210&fit=crop&crop=faces,entropy&auto=format&q=60`,credit:who+' / Unsplash',cors:1});
+const PEOPLE=[UN('1573497019418-b400bb3ab074','Christina @ wocintechchat.com'),UN('1563132337-f159f484226c','Etty Fidele'),UN('1666867540898-aaa1993ffabc','Raymond Owusu-Afriyie'),UN('1739300293504-234817eead52','Ninthgrid'),UN('1573497491765-dccce02b29df','Christina @ wocintechchat.com')];
+const D=[
+ {q:'luanda city',pt:{h:['BEM-VINDO À'],r:'NOVAE',t:'MARCA | CONTEÚDO | CRESCIMENTO'},en:{h:['WELCOME TO'],r:'NOVAE',t:'BRAND | CONTENT | GROWTH'},al:'C'},
+ {q:'african businesswoman',p:PEOPLE,pt:{h:['A SUA MARCA','FALA ANTES'],r:'DE SI',t:'POSICIONAMENTO CLARO'},en:{h:['YOUR BRAND','SPEAKS BEFORE'],r:'YOU DO',t:'CLEAR POSITIONING'},al:'L'},
+ {q:'design studio desk',pt:{h:['OS CLIENTES','COMPRAM'],r:'CLAREZA',t:'NÃO LOGÓTIPOS'},en:{h:['CLIENTS','BUY'],r:'CLARITY',t:'NOT LOGOS'},al:'L'},
+ {q:'marble texture',pt:{h:['CONSISTÊNCIA','GERA'],r:'CONFIANÇA',t:'CADA POST, A MESMA MARCA'},en:{h:['CONSISTENCY','BUILDS'],r:'TRUST',t:'EVERY POST, ONE BRAND'},al:'C'},
+ {q:'laptop desk minimal',pt:{h:['O SEU SITE','É A SUA'],r:'MONTRA',t:'ABERTA 24 HORAS'},en:{h:['YOUR WEBSITE','IS YOUR'],r:'SHOP WINDOW',t:'OPEN 24 HOURS'},al:'L'},
+ {q:'content creator phone',pt:{h:['CONTEÚDO','QUE'],r:'VENDE',t:'SIMPLES | ÚTIL | REGULAR'},en:{h:['CONTENT','THAT'],r:'SELLS',t:'SIMPLE | USEFUL | REGULAR'},al:'L'},
+ {q:'angola',pt:{h:['FEITO EM'],r:'LUANDA',t:'PARA MARCAS ANGOLANAS'},en:{h:['MADE IN'],r:'LUANDA',t:'FOR ANGOLAN BRANDS'},al:'C'},
+ {q:'coffee meeting',pt:{h:['AUDITORIA'],r:'GRATUITA',t:'RESPOSTA EM 24 HORAS'},en:{h:['FREE BRAND'],r:'AUDIT',t:'REPLY IN 24 HOURS'},al:'C'},
+ {q:'gold elegant detail',pt:{h:['SIGA A'],r:'NOVAE',t:'@NOVAE.BRANDSTUDIO'},en:{h:['FOLLOW'],r:'NOVAE',t:'@NOVAE.BRANDSTUDIO'},al:'C'}
+];
+const TXT={pt:{t1:'Os seus 9 primeiros posts',how:'1. Toque na foto que combina com cada frase. 2. Ajuste o texto e o corte. 3. Descarregue um post, ou os 9 num ZIP. 1080×1350.',zip:'DESCARREGAR OS 9 (ZIP)',dl:'DESCARREGAR',more:'Mais fotos',none:'Sem fotos. Abra o Studio e adicione a chave Pexels, ou tente de novo.',left:'ESQUERDA',center:'CENTRO',bottom:'TEXTO EM BAIXO',topT:'TEXTO EM CIMA',ct:'CORTE',ph:'Foto',guide:'Guia'},
+ en:{t1:'Your first 9 posts',how:'1. Tap the photo that fits each line. 2. Adjust the text and crop. 3. Download one post, or all 9 in a ZIP. 1080×1350.',zip:'DOWNLOAD ALL 9 (ZIP)',dl:'DOWNLOAD',more:'More photos',none:'No photos found. Open Studio and add the Pexels key, or try again.',left:'LEFT',center:'CENTER',bottom:'TEXT BOTTOM',topT:'TEXT TOP',ct:'CROP',ph:'Photo',guide:'Guide'}};
+const W=1080,H=1350,GOLD='#C9A24A',IV='#F3EAD6';
+const ls={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let L=ls.get('novae_lang','pt')==='en'?'en':'pt';
+let S;try{S=JSON.parse(ls.get('novae_posts','null'))}catch(e){}
+if(!Array.isArray(S)||S.length!==D.length)S=D.map(d=>({pick:null,al:d.al,pos:'B',crop:'M'}));
+const save=()=>ls.set('novae_posts',JSON.stringify(S));
+const opts=D.map(d=>(d.p||[]).slice()),pages=D.map(()=>0),blobs={},cache={};
+const T=k=>TXT[L][k];
+function sp(x,t,X,y,s,al){let w=0;for(const ch of t)w+=x.measureText(ch).width+s;w-=s;let cx=al==='L'?X:X-w/2;for(const ch of t){x.fillText(ch,cx,y);cx+=x.measureText(ch).width+s}}
+function fit(x,t,font,max,s,min){do{x.font=font.replace('S',s+'px')}while(x.measureText(t).width>max&&(s-=4)>min);return s}
+const srcOf=o=>o.cors?o.src:'/api/proxy?u='+encodeURIComponent(o.src);
+function load(o){const u=srcOf(o);return cache[u]||(cache[u]=new Promise((ok,no)=>{const i=new Image();i.crossOrigin='anonymous';i.onload=()=>ok(i);i.onerror=()=>{delete cache[u];no(new Error('img'))};i.src=u}))}
+async function search(n){
+  const pk=ls.get('lrm_pexels','');pages[n]++;
+  const r=await fetch('/api/media?type=photo&page='+pages[n]+'&q='+encodeURIComponent(D[n].q),{headers:pk?{'x-pexels-key':pk}:{}});
+  const d=await r.json().catch(()=>({}));
+  for(const it of d.items||[])if(!opts[n].some(o=>o.src===it.src))opts[n].push({src:it.src,thumb:it.thumb||it.src,credit:it.credit||''});
+}
+async function render(n){
+  const d=D[n][L],s=S[n],o=s.pick||opts[n][0],cv=document.getElementById('pv'+n),x=cv.getContext('2d');
+  x.fillStyle='#121214';x.fillRect(0,0,W,H);
+  if(o){try{const img=await load(o);const sc=Math.max(W/img.naturalWidth,H/img.naturalHeight),dw=img.naturalWidth*sc,dh=img.naturalHeight*sc;
+    const oy=s.crop==='T'?0:s.crop==='B'?H-dh:(H-dh)/2;x.imageSmoothingQuality='high';x.drawImage(img,(W-dw)/2,oy,dw,dh)}catch(e){}}
+  const top=s.pos==='T';
+  let g=x.createLinearGradient(0,0,0,top?H*.64:260);g.addColorStop(0,'rgba(18,18,20,.88)');g.addColorStop(top?.6:1,top?'rgba(18,18,20,.58)':'rgba(18,18,20,0)');if(top)g.addColorStop(1,'rgba(18,18,20,0)');x.fillStyle=g;x.fillRect(0,0,W,top?H*.64:260);
+  if(!top){g=x.createLinearGradient(0,H*.42,0,H);g.addColorStop(0,'rgba(18,18,20,0)');g.addColorStop(.55,'rgba(18,18,20,.74)');g.addColorStop(1,'rgba(18,18,20,.95)');x.fillStyle=g;x.fillRect(0,H*.42,W,H*.58)}
+  x.textBaseline='alphabetic';x.fillStyle=IV;x.font='500 34px "EB Garamond"';sp(x,'NOVAE',W/2,86,20,'C');x.fillStyle=GOLD;x.fillRect(W/2-42,110,84,3);
+  const al=s.al,X=al==='L'?72:W/2,max=W-150,tl=d.t.split('|');
+  const ws=Math.min(...d.h.map(t=>fit(x,t,'500 S "EB Garamond"',max,112,44))),rs=fit(x,d.r,'500 S "EB Garamond"',max,ws,44);
+  let y=top?200:H-110-(d.h.length*ws+rs*1.02+70+tl.length*44);
+  x.fillStyle=IV;x.font=`500 ${ws}px "EB Garamond"`;for(const t of d.h){y+=ws;sp(x,t,X,y,2,al)}
+  y+=rs*1.02;x.fillStyle=GOLD;x.font=`500 ${rs}px "EB Garamond"`;sp(x,d.r,X,y,2,al);
+  y+=70;x.fillStyle='#e9e2d4';x.font='500 23px Inter';for(const t of tl){sp(x,t.trim(),al==='L'?X+4:X,y,8,al);y+=44}
+  const b=await new Promise(r=>cv.toBlob(r,'image/jpeg',.95));blobs[n]=b;
+  const a=document.getElementById('dl'+n);if(a.href&&a.href.startsWith('blob:'))URL.revokeObjectURL(a.href);if(b)a.href=URL.createObjectURL(b);
+  document.getElementById('cr'+n).textContent=o?T('ph')+': '+o.credit:'';
+}
+function thumbs(n){
+  const box=document.getElementById('th'+n),s=S[n],cur=(s.pick||opts[n][0]||{}).src;box.innerHTML='';
+  opts[n].forEach((o,i)=>{const im=document.createElement('img');im.src=o.thumb;im.loading='lazy';im.decoding='async';im.width=84;im.height=105;im.alt=T('ph')+' '+(i+1);im.tabIndex=0;im.setAttribute('role','button');
+    const on=o.src===cur;im.className=on?'on':'';im.setAttribute('aria-pressed',String(on));
+    im.onclick=()=>{S[n].pick=o;save();thumbs(n);render(n)};im.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();im.click()}};box.appendChild(im)});
+  const m=document.createElement('button');m.type='button';m.className='more';m.textContent=T('more');
+  m.onclick=async()=>{m.disabled=true;try{await search(n)}catch(e){}thumbs(n);if(!opts[n].length)document.getElementById('cr'+n).textContent=T('none')};box.appendChild(m);
+}
+function labels(){
+  document.documentElement.lang=L==='pt'?'pt':'en';
+  document.getElementById('t1').textContent=T('t1');document.getElementById('how').textContent=T('how');document.getElementById('zip').textContent=T('zip');
+  const lb=document.getElementById('lang');lb.innerHTML=L==='pt'?'<b>PT</b>&nbsp;·&nbsp;EN':'PT&nbsp;·&nbsp;<b>EN</b>';lb.setAttribute('aria-label',L==='pt'?'Idioma: português. Tocar para inglês.':'Language: English. Tap for Portuguese.');
+  document.querySelector('.top nav a[href="/guide"]').textContent=T('guide');
+  D.forEach((d,n)=>{const v=d[L];document.getElementById('h'+n).textContent=(n+1)+'. '+v.h.join(' ')+' '+v.r;
+    document.querySelectorAll('#c'+n+' button').forEach(b=>b.textContent=T(b.dataset.l)+(b.dataset.suffix?' '+b.dataset.suffix:''));
+    document.getElementById('dl'+n).textContent=T('dl')+' '+(n+1)});
+}
+function ui(){
+  const app=document.getElementById('app');
+  D.forEach((d,n)=>{const sec=document.createElement('section');
+    sec.innerHTML=`<h2 id="h${n}"></h2><canvas class="pv" id="pv${n}" width="${W}" height="${H}" role="img" aria-label="Post ${n+1}"></canvas><div class="th" id="th${n}" role="group" aria-label="Photos"></div>
+    <div class="ct" id="c${n}"><button type="button" data-k="al" data-v="L" data-l="left"></button><button type="button" data-k="al" data-v="C" data-l="center"></button><button type="button" data-k="pos" data-v="B" data-l="bottom"></button><button type="button" data-k="pos" data-v="T" data-l="topT"></button><button type="button" data-k="crop" data-v="T" data-l="ct"></button><button type="button" data-k="crop" data-v="M" data-l="ct"></button><button type="button" data-k="crop" data-v="B" data-l="ct"></button></div>
+    <a class="dl" id="dl${n}" download="NOVAE-${String(n+1).padStart(2,'0')}.jpg"></a><div class="cr" id="cr${n}"></div>`;
+    app.appendChild(sec);
+    const cb=[...sec.querySelectorAll('.ct button')];cb.slice(4).forEach((b,i)=>b.dataset.suffix=['↑','↕','↓'][i]);
+    const mark=()=>cb.forEach(b=>b.classList.toggle('on',S[n][b.dataset.k]===b.dataset.v));mark();
+    cb.forEach(b=>b.onclick=()=>{S[n][b.dataset.k]=b.dataset.v;save();mark();render(n)});
+  });
+  labels();
+}
+document.getElementById('lang').onclick=()=>{L=L==='pt'?'en':'pt';ls.set('novae_lang',L);labels();D.forEach((d,n)=>{if(document.getElementById('pv'+n).dataset.seen)render(n)})};
+document.getElementById('zip').onclick=async()=>{const z=new JSZip();for(let n=0;n<D.length;n++){if(!opts[n].length&&!S[n].pick){try{await search(n)}catch(e){}}if(!blobs[n])await render(n);if(blobs[n])z.file(`NOVAE-${String(n+1).padStart(2,'0')}.jpg`,blobs[n])}
+  const b=await z.generateAsync({type:'blob'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='NOVAE-9-posts.zip';document.body.appendChild(a);a.click();a.remove()};
+(async()=>{ui();try{await Promise.all([document.fonts.load('500 96px "EB Garamond"'),document.fonts.load('500 24px Inter')])}catch(e){}
+  const show=async n=>{const cv=document.getElementById('pv'+n);if(cv.dataset.seen)return;cv.dataset.seen='1';if(!opts[n].length){try{await search(n)}catch(e){}}thumbs(n);if(!opts[n].length&&!S[n].pick)document.getElementById('cr'+n).textContent=T('none');render(n).catch(()=>{})};
+  const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.unobserve(e.target);show(+e.target.id.slice(2))}}),{rootMargin:'600px 0px'}):null;
+  for(let n=0;n<D.length;n++){if(io)io.observe(document.getElementById('pv'+n));else await show(n)}})();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -28,7 +28,7 @@
       ]
     },
     {
-      "source": "/((?!studio).*)",
+      "source": "/((?!studio|posts).*)",
       "headers": [
         {
           "key": "Content-Security-Policy",
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "source": "/studio(.*)",
+      "source": "/(studio|posts)(.*)",
       "headers": [
         {
           "key": "Content-Security-Policy",

@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /studio
+Disallow: /posts
 Disallow: /api/
 
 Sitemap: https://novae-mu.vercel.app/sitemap.xml
