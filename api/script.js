@@ -14,9 +14,10 @@ Rules:
 - "sound": a 2-word music mood search in English, like "elegant piano" or "soft jazz".
 Return ONLY JSON:
 {"subject":"...","lines":[{"text":"...","accent":"...","visual":"..."}],"caption":"...","hashtags":["..."],"sound":"..."}`;
+const EASY = 'EASY GRAMMAR: short sentences, everyday words, active voice, present tense where you can. No idioms, slang or long clauses. A 14-year-old should understand every line on the first read.';
 const LANG = {
-  pt: 'LANGUAGE: write every line, the caption, the ideas and any document text in Portuguese as written in Angola (pt-AO): natural, clear, correct accents, no Brazilian slang. Keep "visual" and "sound" in English.',
-  en: 'LANGUAGE: write every line, the caption, the ideas and any document text in simple English.'
+  pt: 'LANGUAGE (this overrides any other language rule above): write every line, the caption, the ideas and any document text in Portuguese as written in Angola (pt-AO): natural, clear, correct accents, no Brazilian slang. Keep "visual" and "sound" in English (they are stock search terms). Hashtags may mix Portuguese and English. ' + EASY,
+  en: 'LANGUAGE (this overrides any other language rule above): write every line, the caption, the ideas and any document text in simple English. ' + EASY
 };
 export default async function handler(req) {
   if (req.method !== 'POST') return json({ error: 'post_only' }, 405);
@@ -29,7 +30,7 @@ export default async function handler(req) {
     const text = String(body.text || '').slice(0, 4000);
     const img = body.image && typeof body.image.data === 'string' ? body.image : null;
     if (!text && !img) return { error: 'empty' };
-    const parts = [{ text: PROMPT + '\n' + (LANG[body.lang] || LANG.pt) + '\n\nSUBJECT:\n' + (text || '(see the screenshot: read it, find its subject and theme, and build the reel on that)') }];
+    const parts = [{ text: PROMPT + '\n\nSUBJECT:\n' + (text || '(see the screenshot: read it, find its subject and theme, and build the reel on that)') + '\n\n' + (LANG[body.lang] || LANG.pt) }];
     if (img) parts.push({ inline_data: { mime_type: img.mime || 'image/jpeg', data: img.data } });
     let last = 'ai_failed';
     for (const m of models) {

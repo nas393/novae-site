@@ -1,5 +1,5 @@
 export const config = { runtime: 'edge' };
-const OK = ['pexels.com', 'pixabay.com', 'freesound.org', 'wikimedia.org', 'jamendo.com', 'archive.org'];
+const OK = ['pexels.com', 'pixabay.com', 'freesound.org', 'wikimedia.org', 'jamendo.com', 'archive.org', 'openverse.org', 'staticflickr.com'];
 export default async function handler(req) {
   const u = new URL(req.url);
   let t;
