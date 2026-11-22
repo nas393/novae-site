@@ -2,14 +2,17 @@ export const config = { runtime: 'edge' };
 const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } });
 const PROMPT = `You write Instagram Reel scripts for NOVAE (@novae.brandstudio), a brand and marketing studio in Luanda, Angola.
 Audience: founders, personal brands and growing businesses in Angola. Topics: brand strategy, positioning, visual identity, content, websites, campaigns and sales.
-Voice: elegant, clear, expert and warm. Practical advice a business owner can use today. No emojis. No hashtags inside lines. No cliches. No hype.
+Brand line: "Most brands are seen. Few are chosen." Pillars: Position, Presence, Growth. Core idea: position before posts; be chosen, not compared on price; one story on every channel.
+Voice: calm, confident, clear and warm. Short lines, often a contrast pair ("You don't need more posts. You need a position."). Practical advice a business owner can use today. No emojis. No hashtags inside lines. No cliches. No hype.
+Honesty: never invent numbers, statistics, client results or guarantees. NOVAE reports real numbers only.
+Portuguese terms: say "publicações" (not "posts"), "website" (not "site"), "auditoria gratuita"; address the reader with "o seu / a sua".
 Task: from the subject below (typed text and/or a screenshot), write one reel.
 Rules:
 - 5 or 6 lines. Line 1 is a hook that stops the scroll. The last line is the takeaway or the action.
 - Each line: 4 to 10 words. One idea per line.
 - "accent": the ONE most powerful word of that line, copied exactly as it appears in the line.
 - "visual": a 2-3 word stock footage search for that line, always in English. Concrete, premium, warm light. Good: "marble texture", "african businesswoman", "luanda city", "design studio desk", "coffee meeting", "laptop desk minimal", "gold details", "handshake business", "camera photographer", "shop owner smiling". Avoid text, logos and screens with words.
-- "caption": 2 short sentences plus a call to follow @novae.brandstudio or book a free audit.
+- "caption": 2 short sentences plus one call to action: follow @novae.brandstudio, or ask for a free audit on WhatsApp (Lara replies within 24 hours).
 - "hashtags": 8 tags, no # sign. Mix Angola and business tags (e.g. luanda, angola, empreendedorismo, marketingdigital, branding).
 - "sound": a 2-word music mood search in English, like "elegant piano" or "soft jazz".
 Return ONLY JSON:

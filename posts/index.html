@@ -49,18 +49,18 @@ h2{font:600 12px Inter,sans-serif;letter-spacing:.18em;color:var(--gold);margin:
 const UN=(id,who)=>({src:`https://images.unsplash.com/photo-${id}?w=1080&h=1350&fit=crop&crop=faces,entropy&auto=format&q=90`,thumb:`https://images.unsplash.com/photo-${id}?w=168&h=210&fit=crop&crop=faces,entropy&auto=format&q=60`,credit:who+' / Unsplash',cors:1});
 const PEOPLE=[UN('1573497019418-b400bb3ab074','Christina @ wocintechchat.com'),UN('1563132337-f159f484226c','Etty Fidele'),UN('1666867540898-aaa1993ffabc','Raymond Owusu-Afriyie'),UN('1739300293504-234817eead52','Ninthgrid'),UN('1573497491765-dccce02b29df','Christina @ wocintechchat.com')];
 const D=[
- {q:'luanda city',pt:{h:['BEM-VINDO À'],r:'NOVAE',t:'MARCA | CONTEÚDO | CRESCIMENTO'},en:{h:['WELCOME TO'],r:'NOVAE',t:'BRAND | CONTENT | GROWTH'},al:'C'},
+ {q:'luanda city',pt:{h:['BOAS-VINDAS À'],r:'NOVAE',t:'POSIÇÃO | PRESENÇA | CRESCIMENTO'},en:{h:['WELCOME TO'],r:'NOVAE',t:'POSITION | PRESENCE | GROWTH'},al:'C'},
  {q:'african businesswoman',p:PEOPLE,pt:{h:['A SUA MARCA','FALA ANTES'],r:'DE SI',t:'POSICIONAMENTO CLARO'},en:{h:['YOUR BRAND','SPEAKS BEFORE'],r:'YOU DO',t:'CLEAR POSITIONING'},al:'L'},
  {q:'design studio desk',pt:{h:['OS CLIENTES','COMPRAM'],r:'CLAREZA',t:'NÃO LOGÓTIPOS'},en:{h:['CLIENTS','BUY'],r:'CLARITY',t:'NOT LOGOS'},al:'L'},
- {q:'marble texture',pt:{h:['CONSISTÊNCIA','GERA'],r:'CONFIANÇA',t:'CADA POST, A MESMA MARCA'},en:{h:['CONSISTENCY','BUILDS'],r:'TRUST',t:'EVERY POST, ONE BRAND'},al:'C'},
- {q:'laptop desk minimal',pt:{h:['O SEU SITE','É A SUA'],r:'MONTRA',t:'ABERTA 24 HORAS'},en:{h:['YOUR WEBSITE','IS YOUR'],r:'SHOP WINDOW',t:'OPEN 24 HOURS'},al:'L'},
- {q:'content creator phone',pt:{h:['CONTEÚDO','QUE'],r:'VENDE',t:'SIMPLES | ÚTIL | REGULAR'},en:{h:['CONTENT','THAT'],r:'SELLS',t:'SIMPLE | USEFUL | REGULAR'},al:'L'},
+ {q:'marble texture',pt:{h:['CONSISTÊNCIA','GERA'],r:'CONFIANÇA',t:'CADA PUBLICAÇÃO, A MESMA MARCA'},en:{h:['CONSISTENCY','BUILDS'],r:'TRUST',t:'EVERY POST, ONE BRAND'},al:'C'},
+ {q:'laptop desk minimal',pt:{h:['O SEU WEBSITE','É A SUA'],r:'MONTRA',t:'ABERTA 24 HORAS'},en:{h:['YOUR WEBSITE','IS YOUR'],r:'SHOP WINDOW',t:'OPEN 24 HOURS'},al:'L'},
+ {q:'content creator phone',pt:{h:['NÃO PRECISA DE','MAIS PUBLICAÇÕES.','PRECISA DE'],r:'POSIÇÃO',t:'MUITAS MARCAS SÃO VISTAS.|POUCAS SÃO ESCOLHIDAS.'},en:{h:['YOU DON’T NEED','MORE POSTS.','YOU NEED A'],r:'POSITION',t:'MOST BRANDS ARE SEEN.|FEW ARE CHOSEN.'},al:'L'},
  {q:'angola',pt:{h:['FEITO EM'],r:'LUANDA',t:'PARA MARCAS ANGOLANAS'},en:{h:['MADE IN'],r:'LUANDA',t:'FOR ANGOLAN BRANDS'},al:'C'},
- {q:'coffee meeting',pt:{h:['AUDITORIA'],r:'GRATUITA',t:'RESPOSTA EM 24 HORAS'},en:{h:['FREE BRAND'],r:'AUDIT',t:'REPLY IN 24 HOURS'},al:'C'},
+ {q:'coffee meeting',pt:{h:['AUDITORIA'],r:'GRATUITA',t:'A LARA RESPONDE EM 24 HORAS'},en:{h:['FREE BRAND'],r:'AUDIT',t:'LARA REPLIES WITHIN 24 HOURS'},al:'C'},
  {q:'gold elegant detail',pt:{h:['SIGA A'],r:'NOVAE',t:'@NOVAE.BRANDSTUDIO'},en:{h:['FOLLOW'],r:'NOVAE',t:'@NOVAE.BRANDSTUDIO'},al:'C'}
 ];
-const TXT={pt:{t1:'Os seus 9 primeiros posts',how:'1. Toque na foto que combina com cada frase. 2. Ajuste o texto e o corte. 3. Descarregue um post, ou os 9 num ZIP. 1080×1350.',zip:'DESCARREGAR OS 9 (ZIP)',dl:'DESCARREGAR',more:'Mais fotos',none:'Sem fotos. Abra o Studio e adicione a chave Pexels, ou tente de novo.',left:'ESQUERDA',center:'CENTRO',bottom:'TEXTO EM BAIXO',topT:'TEXTO EM CIMA',ct:'CORTE',ph:'Foto',guide:'Guia'},
- en:{t1:'Your first 9 posts',how:'1. Tap the photo that fits each line. 2. Adjust the text and crop. 3. Download one post, or all 9 in a ZIP. 1080×1350.',zip:'DOWNLOAD ALL 9 (ZIP)',dl:'DOWNLOAD',more:'More photos',none:'No photos found. Open Studio and add the Pexels key, or try again.',left:'LEFT',center:'CENTER',bottom:'TEXT BOTTOM',topT:'TEXT TOP',ct:'CROP',ph:'Photo',guide:'Guide'}};
+const TXT={pt:{t1:'Os seus 9 primeiros posts',how:'1. Toque na foto que combina com cada frase. 2. Ajuste o texto e o corte. 3. Descarregue um post, ou os 9 num ZIP. 1080×1350.',zip:'DESCARREGAR OS 9 (ZIP)',dl:'DESCARREGAR',more:'Mais fotos',none:'Sem fotos. Abra o Studio e adicione a chave Pexels, ou tente de novo.',left:'ESQUERDA',center:'CENTRO',bottom:'TEXTO EM BAIXO',topT:'TEXTO EM CIMA',ct:'CORTE',ph:'Foto',guide:'Guia',credit:'· Ponha este crédito na legenda.'},
+ en:{t1:'Your first 9 posts',how:'1. Tap the photo that fits each line. 2. Adjust the text and crop. 3. Download one post, or all 9 in a ZIP. 1080×1350.',zip:'DOWNLOAD ALL 9 (ZIP)',dl:'DOWNLOAD',more:'More photos',none:'No photos found. Open Studio and add the Pexels key, or try again.',left:'LEFT',center:'CENTER',bottom:'TEXT BOTTOM',topT:'TEXT TOP',ct:'CROP',ph:'Photo',guide:'Guide',credit:'· Put this credit in the caption.'}};
 const W=1080,H=1350,GOLD='#C9A24A',IV='#F3EAD6';
 const ls={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 let L=ls.get('novae_lang','pt')==='en'?'en':'pt';
@@ -96,7 +96,7 @@ async function render(n){
   y+=70;x.fillStyle='#e9e2d4';x.font='500 23px Inter';for(const t of tl){sp(x,t.trim(),al==='L'?X+4:X,y,8,al);y+=44}
   const b=await new Promise(r=>cv.toBlob(r,'image/jpeg',.95));blobs[n]=b;
   const a=document.getElementById('dl'+n);if(a.href&&a.href.startsWith('blob:'))URL.revokeObjectURL(a.href);if(b)a.href=URL.createObjectURL(b);
-  document.getElementById('cr'+n).textContent=o?T('ph')+': '+o.credit:'';
+  document.getElementById('cr'+n).textContent=o?T('ph')+': '+o.credit+(/CC BY/i.test(o.credit)?' '+T('credit'):''):'';
 }
 function thumbs(n){
   const box=document.getElementById('th'+n),s=S[n],cur=(s.pick||opts[n][0]||{}).src;box.innerHTML='';
