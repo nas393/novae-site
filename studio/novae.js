@@ -16,4 +16,7 @@
     draw();h.insertBefore(b,h.lastElementChild);
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',add);else add();
+  // Q OS Office links open Autopilot with the subject already typed: /studio?subject=...
+  var subj=(function(){try{return (new URLSearchParams(location.search).get("subject")||"").slice(0,200)}catch(e){return ""}})();
+  if(subj){var tries=0;var fill=function(){var i=document.getElementById("apSub");if(i){i.value=subj;i.dispatchEvent(new Event("input",{bubbles:true}));try{i.focus()}catch(e){}return}if(++tries<50)setTimeout(fill,100)};if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",fill);else fill();}
 })();
